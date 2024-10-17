@@ -1,0 +1,41 @@
+@use '@angular/material' as mat;
+
+.shape {
+  position: fixed;
+
+  &.shape-one {
+    background-color: #FFB887;
+    width: 440px;
+    height: 440px;
+    border-radius: 35% 30% 45% 30%;
+    left: 36vw;
+    transform: rotate(40deg);
+    top: 32vh;
+  }
+
+  &.shape-two {
+    background-color: #FF6600;
+    width: 375px;
+    height: 375px;
+    border-radius: 30% 24% 33% 75%;
+    left: 44vw;
+    transform: rotate(25deg);
+    top: 23vh;
+  }
+}
+
+.login-card {
+  width: 26vw;
+  text-align: center;
+
+  .mat-mdc-form-field {
+    width: 100%;
+  }
+
+  .mat-mdc-unelevated-button {
+    width: 100%;
+  }
+
+  .btn-register {
+  }
+}

@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Registro</h2>
+<mat-dialog-content class="pt-4 pr-5 pb-4 pl-5">
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Correo electrónico</mat-label>
+      <input matInput formControlName="email"
+             placeholder="correo@correo.com" type="email">
+
+      @if (form.get('email')?.errors) {
+        <mat-error>
+          {{form.get('email')?.errors | formFieldErrors}}
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="displayName"
+             type="text">
+
+      @if (form.get('displayName')?.errors) {
+        <mat-error>
+          {{form.get('displayName')?.errors | formFieldErrors}}
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password"
+             type="password">
+      <mat-icon matSuffix>visibility</mat-icon>
+
+      @if (form.get('password')?.errors) {
+        <mat-error>
+          {{form.get('password')?.errors | formFieldErrors}}
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <button type="button" class="mr-3" mat-button
+            (click)="onCancel()">Cancelar</button>
+    <button mat-flat-button [disabled]="form.invalid">CONTINUAR</button>
+  </form>
+
+</mat-dialog-content>
