@@ -10,6 +10,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {FormFieldErrorsPipe} from "../../shared/pipes/form-field-errors.pipe";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {AppUtil} from "../../shared/utilities/app-util";
+import {TOKEN_KEY} from "../../shared/utilities/contants";
 
 @Component({
   selector: 'app-login',
@@ -39,7 +41,7 @@ export class LoginComponent {
   constructor(private loginService: LoginService) {
     this.form = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.minLength(6), Validators.maxLength(50), Validators.required]),
     });
   }
 
@@ -49,7 +51,10 @@ export class LoginComponent {
 
         if (result === null) {
           this.dialog.open(RegisterDialogComponent, {});
+          return;
         }
+
+        AppUtil.setStorageValue(TOKEN_KEY, result.idToken);
       },
       error: error => {
         console.log(error);
