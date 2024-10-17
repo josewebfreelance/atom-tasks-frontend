@@ -3,9 +3,11 @@ import {provideRouter} from '@angular/router';
 
 import {routes} from './app.routes';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
-import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptors} from "@angular/common/http";
+import {provideHttpClient, withInterceptors} from "@angular/common/http";
 import {LoadingInterceptor} from "./shared/interceptors/loading.interceptor";
 import {LoadingService} from "./shared/services/loading.service";
+import {HttpTokenInterceptorInterceptor} from "./shared/interceptors/http-token-interceptor.interceptor";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,5 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     LoadingService,
     provideHttpClient(withInterceptors([LoadingInterceptor])),
+    provideHttpClient(withInterceptors([HttpTokenInterceptorInterceptor])),
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ]
 };

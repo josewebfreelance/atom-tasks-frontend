@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {SECURITY_URL} from "../utilities/contants";
@@ -7,8 +7,8 @@ import {SECURITY_URL} from "../utilities/contants";
   providedIn: 'root'
 })
 export class LoginService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   login(entity: any): Observable<any> {
     return this.http.post(`${SECURITY_URL}/login`, entity);
