@@ -9,18 +9,4 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
-
-  .mat-mdc-progress-spinner {
-    transform: scale(.6);
-
-    .circle {
-      stroke: white !important;
-    }
-  }
-
-  .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
-    .circle {
-      stroke: white !important;
-    }
-  }
 }

@@ -1,0 +1,46 @@
+@import './variables';
+
+.nav-bar {
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  background-color: $primary-color;
+  color: white;
+
+  &__user {
+    margin: 0;
+    font-size: 1.3rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 3px 16px 3px 3px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+
+    .avatar {
+      background: url("/assets/avatar.gif") no-repeat center -3px;
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-size: 140%;
+      border-radius: 100px;
+
+    }
+  }
+
+  &__logout {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+}

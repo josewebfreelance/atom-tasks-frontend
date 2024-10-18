@@ -1,6 +1,13 @@
+@import './variables';
+
 .layout {
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #ECEFF1;
+
+  &-login {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

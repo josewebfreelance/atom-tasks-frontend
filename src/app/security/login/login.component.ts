@@ -11,7 +11,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {FormFieldErrorsPipe} from "../../shared/pipes/form-field-errors.pipe";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {AppUtil} from "../../shared/utilities/app-util";
-import {TOKEN_KEY} from "../../shared/utilities/contants";
+import {TOKEN_KEY, USER_KEY} from "../../shared/utilities/contants";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -36,6 +37,7 @@ import {TOKEN_KEY} from "../../shared/utilities/contants";
 })
 export class LoginComponent {
   readonly dialog = inject(MatDialog);
+  readonly router = inject(Router);
   form: FormGroup;
 
   constructor(private loginService: LoginService) {
@@ -54,7 +56,9 @@ export class LoginComponent {
           return;
         }
 
+        AppUtil.setStorageValue(USER_KEY, result.user.displayName);
         AppUtil.setStorageValue(TOKEN_KEY, result.idToken);
+        this.router.navigate(['/tasks']).then();
       },
       error: error => {
         console.log(error);
