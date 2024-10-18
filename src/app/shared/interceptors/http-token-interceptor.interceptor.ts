@@ -6,7 +6,7 @@ export const HttpTokenInterceptorInterceptor: HttpInterceptorFn = (req, next) =>
   const token = AppUtil.getStorageValue(TOKEN_KEY);
   const modifiedRequest = req.clone({
     setHeaders: {
-      Authorization: `${token}`
+      Authorization: `Bearer ${token}`
     }
   });
 

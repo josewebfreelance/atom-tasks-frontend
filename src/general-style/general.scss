@@ -44,3 +44,24 @@ PADDING
     @include spacePositionAround($nameSpaceP, left, rem);
   }
 }
+
+/*
+TEXT-TRUNCATE
+*/
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-mdc-progress-spinner {
+  transform: scale(.6);
+
+  .circle {
+    stroke: white !important;
+  }
+}
+
+.mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+  stroke: white !important;
+}
