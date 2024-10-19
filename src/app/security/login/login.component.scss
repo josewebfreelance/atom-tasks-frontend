@@ -1,0 +1,63 @@
+@use '@angular/material' as mat;
+@import '../../../general-style/mixins/break-points';
+
+.shape {
+  position: fixed;
+
+  &.shape-one {
+    background-color: #FFB887;
+    width: 440px;
+    height: 440px;
+    border-radius: 35% 30% 45% 30%;
+    left: 36vw;
+    transform: rotate(40deg);
+    top: 32vh;
+  }
+
+  &.shape-two {
+    background-color: #FF6600;
+    width: 375px;
+    height: 375px;
+    border-radius: 30% 24% 33% 75%;
+    left: 44vw;
+    transform: rotate(25deg);
+    top: 23vh;
+  }
+}
+
+.login-card {
+  width: 26vw;
+  text-align: center;
+
+  @include break-point(lg) {
+    width: 72vw;
+  }
+
+  @include break-point(md) {
+    width: 56vw;
+  }
+
+  @include break-point(sm) {
+    width: 90vw;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  @include break-point(xs) {
+    width: 92vw;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  @include break-point(xl) {
+    width: 26vw;
+  }
+
+  .mat-mdc-form-field {
+    width: 100%;
+  }
+
+  .mat-mdc-unelevated-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,67 @@
+@mixin spacePositionAround($space, $position, $length-unit) {
+  @for $i from 1 through 5 {
+    &-#{$i} {
+      #{$space}-#{$position}: #{.6 * $i}#{$length-unit} !important;
+    }
+  }
+}
+
+$nameSpaceM: margin;
+$nameSpaceP: padding;
+
+/*
+MARGIN
+*/
+.m {
+  &t {
+    @include spacePositionAround($nameSpaceM, top, rem);
+  }
+  &r {
+    @include spacePositionAround($nameSpaceM, right, rem);
+  }
+  &b {
+    @include spacePositionAround($nameSpaceM, bottom, rem);
+  }
+  &l {
+    @include spacePositionAround($nameSpaceM, left, rem);
+  }
+}
+
+/*
+PADDING
+*/
+.p {
+  &t {
+    @include spacePositionAround($nameSpaceP, top, rem);
+  }
+  &r {
+    @include spacePositionAround($nameSpaceP, right, rem);
+  }
+  &b {
+    @include spacePositionAround($nameSpaceP, bottom, rem);
+  }
+  &l {
+    @include spacePositionAround($nameSpaceP, left, rem);
+  }
+}
+
+/*
+TEXT-TRUNCATE
+*/
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-mdc-progress-spinner {
+  transform: scale(.6);
+
+  .circle {
+    stroke: white !important;
+  }
+}
+
+.mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+  stroke: white !important;
+}

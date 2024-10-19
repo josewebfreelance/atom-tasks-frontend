@@ -1,0 +1,31 @@
+<h4 mat-dialog-title>{{data && data.id ? 'Actualizar' : 'Crear'}} tarea</h4>
+
+<form [formGroup]="form" (ngSubmit)="onsubmit()">
+  <mat-dialog-content class="pt-1">
+    <mat-form-field appearance="outline">
+      <mat-label>Titulo</mat-label>
+      <input formControlName="title" matInput type="text">
+
+      @if (form.get('title')?.errors) {
+        <mat-error>
+          {{ form.get('title')?.errors | formFieldErrors }}
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <input formControlName="description" matInput type="text">
+
+      @if (form.get('description')?.errors) {
+        <mat-error>
+          {{ form.get('description')?.errors | formFieldErrors }}
+        </mat-error>
+      }
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close type="button">Cancelar</button>
+    <button mat-flat-button [disabled]="form.invalid">Continuar</button>
+  </mat-dialog-actions>
+</form>

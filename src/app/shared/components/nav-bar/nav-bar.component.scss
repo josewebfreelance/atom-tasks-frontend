@@ -1,0 +1,126 @@
+@import "../../../../general-style/mixins/break-points";
+@import '../../../../general-style/variables';
+
+.nav-bar-component {
+  .nav-bar {
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background-color: $primary-color;
+    color: white;
+
+    &__search {
+      width: 30vw;
+      margin-left: 35vw;
+      margin-right: auto;
+      position: relative;
+
+      @include break-point(md) {
+        width: 35vw;
+        margin-left: 2vw
+      }
+
+      @include break-point(sm) {
+        width: 51vw;
+        margin-left: 2vw
+      }
+
+      input {
+        position: relative;
+        width: 100%;
+        border: none;
+        border-radius: 100px;
+        height: 36px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .mat-icon {
+        position: absolute;
+        top: 8px;
+
+        &.icon-search {
+          right: 2.6rem;
+          color: #1565C0;
+        }
+
+        &.icon-clear {
+          right: 0;
+          color: red;
+        }
+
+        @include break-point(sm) {
+          &.icon-search {
+            right: 0.8rem;
+          }
+
+          &.icon-clear {
+            right: -24px;
+          }
+        }
+
+        @include break-point(md) {
+          &.icon-search {
+            right: 1.6rem;
+          }
+
+          &.icon-clear {
+            right: -12px;
+          }
+        }
+      }
+    }
+
+    &__user {
+      margin: 0;
+      font-size: 1.3rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 3px 16px 3px 3px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+
+      @include break-point(sm) {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        justify-content: center;
+      }
+
+      .avatar {
+        background: url("/assets/avatar.gif") no-repeat center -3px;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-size: 140%;
+        border-radius: 100px;
+
+        @include break-point(sm) {
+          display: none;
+        }
+      }
+    }
+
+    &__logout {
+      background-color: rgba(0, 0, 0, 0.4);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+
+      @include break-point(sm) {
+        margin-left: .5rem !important;
+        margin-right: .2rem !important;
+      }
+    }
+  }
+}

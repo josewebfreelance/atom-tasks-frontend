@@ -1,0 +1,46 @@
+<div class="layout-login">
+  <span class="shape shape-one"></span>
+  <span class="shape shape-two"></span>
+
+  <mat-card class="login-card pt-4 pr-5 pb-4 pl-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-card-content class="">
+        <h2>Ingresar</h2>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Correo electrónico</mat-label>
+          <input formControlName="email" matInput placeholder="correo@correo.com" type="email">
+          <mat-icon matPrefix>email</mat-icon>
+
+          @if (form.get('email')?.errors) {
+            <mat-error>
+              {{form.get('email')?.errors | formFieldErrors}}
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password" [type]="isPasswordHide ? 'password' : 'text'">
+          <mat-icon matPrefix>lock_outline</mat-icon>
+          <mat-icon matSuffix (click)="isPasswordHide = !isPasswordHide">visibility</mat-icon>
+
+          @if (form.get('password')?.errors) {
+            <mat-error>
+              {{form.get('password')?.errors | formFieldErrors}}
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <button mat-flat-button class="mt-3 mb-3" [disabled]="form.invalid">
+          CONTINUAR
+        </button>
+
+        <button mat-button type="button"
+                class="btn-register"
+                (click)="registerDialogOpen()">ó Registrarse</button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+
+</div>
