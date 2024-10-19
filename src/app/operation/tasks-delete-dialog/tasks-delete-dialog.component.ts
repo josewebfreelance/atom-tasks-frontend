@@ -5,6 +5,7 @@ import {MatButton} from "@angular/material/button";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TasksService} from "../../shared/services/tasks.service";
 import {AppUtil} from "../../shared/utilities/app-util";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-tasks-delete-dialog',
@@ -33,8 +34,8 @@ export class TasksDeleteDialogComponent {
         AppUtil.snackBar(this._snackBar, result.message)
         this.dialogRef.close(true);
       },
-      error: result => {
-        AppUtil.snackBar(this._snackBar, result.message)
+      error: (error: HttpErrorResponse) => {
+        AppUtil.snackBar(this._snackBar, error.message);
       }
     });
   }

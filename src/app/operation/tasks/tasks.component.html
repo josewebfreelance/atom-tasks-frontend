@@ -3,34 +3,46 @@
 
   <mat-card class="list-tasks mt-2">
     <mat-card-content>
-      <mat-list role="list">
-        @for (item of list; track item.id) {
-          <mat-list-item lines="3" class="mt-2 mb-2">
-            <span matListItemTitle matTooltip="{{!item.status ? 'Finalizar' : 'Revertir'}}" (click)="updateTaskStatus(item);">
-              <button mat-icon-button>
-                <mat-icon class="{{!item.status ? 'pending-task' : 'end-task'}}">{{item.status ? 'check_circle' : 'radio_button_unchecked'}}</mat-icon>
-              </button>
+      @if (list.length > 0) {
+        <mat-list role="list">
+          @for (item of list; track item.id) {
+            <mat-list-item lines="3" class="mt-2 mb-2">
+              <div matListItemTitle matTooltip="{{!item.status ? 'Finalizar' : 'Revertir'}}"
+                   (click)="updateTaskStatus(item);">
+                <button mat-icon-button>
+                  <mat-icon
+                    class="{{!item.status ? 'pending-task' : 'end-task'}}">{{ item.status ? 'check_circle' : 'radio_button_unchecked' }}
+                  </mat-icon>
+                </button>
 
-              <span class="mr-2 title text-truncate {{item.status ? 'text-decoration-line-through' : ''}}">{{ item.title }}</span> <span class="date">{{ item.creation | date: 'dd/MM/yyyy' }}</span>
-            </span>
-            <span class="mat-mdc-list-item__description">
+                <span
+                  class="mr-2 title text-truncate {{item.status ? 'text-decoration-line-through' : ''}}">{{ item.title }}</span>
+                <span class="date">{{ item?.creation | date: 'dd/MM/yyyy' }}</span>
+              </div>
+              <div class="mat-mdc-list-item__description">
               <span class="{{item.status ? 'text-decoration-line-through' : ''}}">
                 {{ item.description }}
               </span>
 
-              <button mat-button class="ml-2 mr-1 btn-edit" (click)="createTaskOpen(item);">
-                Editar
-              </button>
+                <div class="mat-mdc-list-item__btn-container">
+                  <button mat-button class="ml-2 mr-1 btn-edit" (click)="createTaskOpen(item);">
+                    Editar
+                  </button>
 
-              <button mat-icon-button class="btn-delete" matTooltip="Eliminar" (click)="deleteTaskOpen(item);">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </span>
+                  <button mat-icon-button class="btn-delete" matTooltip="Eliminar" (click)="deleteTaskOpen(item);">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
 
-          </mat-list-item>
-          <mat-divider class="mat-list-item__divider"></mat-divider>
-        }
-      </mat-list>
+            </mat-list-item>
+            <mat-divider class="mat-list-item__divider"></mat-divider>
+          }
+        </mat-list>
+      } @else {
+        <p class="empty-list">Aún no hay tareas creadas. 🗒</p>
+        <p>haz click en el boton + para crear la primera. 😃</p>
+      }
 
     </mat-card-content>
   </mat-card>

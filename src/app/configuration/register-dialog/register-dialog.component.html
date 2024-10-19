@@ -29,8 +29,8 @@
     <mat-form-field appearance="outline">
       <mat-label>Contraseña</mat-label>
       <input matInput formControlName="password"
-             type="password">
-      <mat-icon matSuffix>visibility</mat-icon>
+             [type]="isPasswordHide ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="isPasswordHide = !isPasswordHide">visibility</mat-icon>
 
       @if (form.get('password')?.errors) {
         <mat-error>

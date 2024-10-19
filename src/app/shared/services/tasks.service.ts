@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {OPERATION_URL} from "../utilities/contants";
+import {OPERATION_URL, SECURITY_URL} from "../utilities/contants";
 import {Task} from "../interfaces/task";
 
 @Injectable({
@@ -10,8 +10,8 @@ import {Task} from "../interfaces/task";
 export class TasksService {
   readonly http = inject(HttpClient);
 
-  query(): Observable<any> {
-    return this.http.get(OPERATION_URL);
+  query(search?: string): Observable<any> {
+    return this.http.get(`${OPERATION_URL}?search=${search}`);
   }
 
   create(entity: Task): Observable<any> {

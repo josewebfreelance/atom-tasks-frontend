@@ -13,6 +13,8 @@ import {Task} from "../../shared/interfaces/task";
 import {AppUtil} from "../../shared/utilities/app-util";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TasksDeleteDialogComponent} from "../tasks-delete-dialog/tasks-delete-dialog.component";
+import {ActivatedRoute, Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-tasks',
@@ -30,26 +32,33 @@ import {TasksDeleteDialogComponent} from "../tasks-delete-dialog/tasks-delete-di
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss',
   encapsulation: ViewEncapsulation.None,
-  host:{ 'class': 'tasks-component'}
+  host: {'class': 'tasks-component'}
 })
 export class TasksComponent implements OnInit {
   readonly _snackBar = inject(MatSnackBar);
   readonly service = inject(TasksService);
   readonly dialog = inject(MatDialog);
+  readonly route = inject(ActivatedRoute);
+  readonly router = inject(Router)
 
   list: Task[] = [];
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.loadAll(params?.['search'] ?? '');
+    })
+
     this.loadAll();
   }
 
-  loadAll(): void {
-    this.service.query().subscribe({
+  loadAll(search: string = ''): void {
+    this.service.query(search).subscribe({
       next: data => {
+        console.log(data)
         this.list = data
       },
-      error: error => {
-        console.log(error)
+      error: (error: HttpErrorResponse) => {
+        AppUtil.snackBar(this._snackBar, error.message);
       }
     })
   }
@@ -75,8 +84,8 @@ export class TasksComponent implements OnInit {
         AppUtil.snackBar(this._snackBar, result.message)
         this.loadAll();
       },
-      error: result => {
-        AppUtil.snackBar(this._snackBar, result.message)
+      error: (error: HttpErrorResponse) => {
+        AppUtil.snackBar(this._snackBar, error.message);
       }
     })
   }

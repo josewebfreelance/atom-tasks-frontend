@@ -10,6 +10,7 @@ import {TasksService} from "../../shared/services/tasks.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AppUtil} from "../../shared/utilities/app-util";
 import {Task} from "../../shared/interfaces/task";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-tasks-dialog',
@@ -60,15 +61,15 @@ export class TasksDialogComponent implements OnInit {
         const {title, description} = this.form.value;
         const {id, status} = this.data;
 
-        const taskToUpdate: Task = { id, title, description, status };
+        const taskToUpdate: Task = {id, title, description, status};
 
         this.service.update(taskToUpdate).subscribe({
           next: result => {
             AppUtil.snackBar(this._snackBar, result.message)
             this.dialogRef.close(true);
           },
-          error: result => {
-            AppUtil.snackBar(this._snackBar, result.message)
+          error: (error: HttpErrorResponse) => {
+            AppUtil.snackBar(this._snackBar, error.message);
           }
         })
       } else {
@@ -77,9 +78,9 @@ export class TasksDialogComponent implements OnInit {
             AppUtil.snackBar(this._snackBar, result.message)
             this.dialogRef.close(true);
           },
-          error: result => {
-            AppUtil.snackBar(this._snackBar, result.message)
-          },
+          error: (error: HttpErrorResponse) => {
+            AppUtil.snackBar(this._snackBar, error.message);
+          }
         });
       }
     }
