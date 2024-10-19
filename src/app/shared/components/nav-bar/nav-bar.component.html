@@ -1,4 +1,10 @@
 <div class="nav-bar">
+  <div class="nav-bar__search">
+    <input [formControl]="search" placeholder="Buscar por título" (keydown.enter)="onSubmit();">
+    <mat-icon class="icon-search" (click)="onSubmit();">search</mat-icon>
+    <mat-icon class="icon-clear" (click)="onSubmit(true);">cancel</mat-icon>
+  </div>
+
   <div class="nav-bar__user">
     <span class="avatar mr-1"></span>
     {{displayName}}

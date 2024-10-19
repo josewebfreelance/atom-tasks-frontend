@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@import '../../../general-style/mixins/break-points';
 
 .shape {
   position: fixed;
@@ -28,14 +29,35 @@
   width: 26vw;
   text-align: center;
 
+  @include break-point(lg) {
+    width: 72vw;
+  }
+
+  @include break-point(md) {
+    width: 56vw;
+  }
+
+  @include break-point(sm) {
+    width: 90vw;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  @include break-point(xs) {
+    width: 92vw;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  @include break-point(xl) {
+    width: 26vw;
+  }
+
   .mat-mdc-form-field {
     width: 100%;
   }
 
   .mat-mdc-unelevated-button {
     width: 100%;
-  }
-
-  .btn-register {
   }
 }

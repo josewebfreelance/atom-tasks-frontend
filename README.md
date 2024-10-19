@@ -1,3 +1,30 @@
+## Estilo y Diseño
+
+Escogí este diseño porque pienso que se adapta mejor al objetivo de la aplicación. La barra de navegación está situada en la parte superior, con la información del usuario y la búsqueda, lo que permite aprovechar mejor el espacio para las tareas.
+
+Considero que el diseño de las tareas es conveniente para mostrar información clara con un diseño limpio y con acciones claras que el usuario puede realizar.
+
+Los colores principalmente fueron inspirados en los colores de **atomchat.io** y algunos colores de **Material Colors**.
+
+## Tecnologías utilizadas
+
+### Front-end
+
+El Front-end está desarrollado en **JavaScript/TypeScript** utilizando **Angular 18** como framework, lo que permite crear una interfaz de usuario robusta y escalable, con componentes, rutas, middlewares y utilitarios.
+
+Además, se implementó la librería **Angular Material** para aprovechar los componentes que esta provee.
+
+### Estructura del proyecto
+
+A continuación se muestra la estructura de carpetas del proyecto:
+
+![Estructura del proyecto](./readme-assets/img.png)
+
+### Despliegue
+
+El despliegue del Front-end se realizó en **Firebase Hosting**.
+
+
 # AtomTasksFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.1.

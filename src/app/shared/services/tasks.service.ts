@@ -10,8 +10,8 @@ import {Task} from "../interfaces/task";
 export class TasksService {
   readonly http = inject(HttpClient);
 
-  query(): Observable<any> {
-    return this.http.get(OPERATION_URL);
+  query(search?: string): Observable<any> {
+    return this.http.get(`${OPERATION_URL}?search=${search}`);
   }
 
   create(entity: Task): Observable<any> {
