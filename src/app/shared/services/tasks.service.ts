@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {OPERATION_URL, SECURITY_URL} from "../utilities/contants";
+import {OPERATION_URL} from "../utilities/contants";
 import {Task} from "../interfaces/task";
 
 @Injectable({
